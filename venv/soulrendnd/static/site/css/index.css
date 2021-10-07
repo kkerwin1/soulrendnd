@@ -1,0 +1,21 @@
+body {
+  background-color: #141414;
+}
+
+h1 {
+  color: #dad7cd;
+  text-align: center;
+}
+
+a {
+  color: #0d21a1;
+}
+
+section {
+  background-color: #878f99;
+  padding: 25px;
+  color: #dad7cd;
+  border-radius: 15px;
+  width: 40%;
+  margin: auto;
+}
