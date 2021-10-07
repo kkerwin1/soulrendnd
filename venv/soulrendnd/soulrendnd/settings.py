@@ -36,7 +36,7 @@ if match:
 
 # production mode
 else:
-	regex2 = re.compile("/home/adjutant")
+	regex2 = re.compile("^/home/adjutant")
 	match = regex.match(_path)
 	if match:
 		DEBUG = False
