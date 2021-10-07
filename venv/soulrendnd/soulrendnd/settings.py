@@ -47,7 +47,7 @@ else:
 				'PASSWORD': database_password,
 				}
 			}
-else
+else:
 	raise NameError("Program runs in neither the home directories of kris nor adjutant.")
 
 # Quick-start development settings - unsuitable for production
