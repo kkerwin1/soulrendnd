@@ -14,18 +14,44 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from my_secrets import secret_key, database_password
 
+development_user = "kris"
+production_user = "adjutant"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# development mode
+if development_user in BASE_DIR:
+    SECRET_KEY = 'django-insecure-nr*9bs(t$e(zecn4pr&z6*o==35=n2zjna*4sn9luprw9z4h7v'
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+    }
+    DEBUG = True
+
+#production mode
+elif production_user in BASE_DIR:
+    SECRET_KEY = secret_key
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'soulrendnd',
+    	'USER': 'adjutant',
+    	'PASSWORD': database_password,
+        }
+    }
+    DEBUG = False
+else
+    raise NameError('Please define a development and/or production user in settings.py.')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '192.168.1.19', '192.168.1.14', 'soulrendnd.servegame.com', '127.0.0.1', '192.168.1.*']
 
@@ -76,14 +102,7 @@ WSGI_APPLICATION = 'soulrendnd.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'soulrendnd',
-	'USER': 'adjutant',
-	'PASSWORD': database_password,
-    }
-}
+
 
 
 # Password validation
