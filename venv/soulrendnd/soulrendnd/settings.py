@@ -30,7 +30,7 @@ if "kris" in os.path.join(BASE_DIR):
     }
 
 # production mode
-elif "adjutant" in os.path.join(BASE_DIR)
+elif "adjutant" in os.path.join(BASE_DIR):
 	DEBUG = False
 	SECRET_KEY = secret_key
 	DATABASES = {
