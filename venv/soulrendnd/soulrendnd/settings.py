@@ -13,36 +13,34 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from my_secrets import secret_key, database_password
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#print(development_user)
-#print(production_user)
+
 # development mode
 if "kris" in os.getcwd():
 	DEBUG = True
 	SECRET_KEY = 'django-insecure-nr*9bs(t$e(zecn4pr&z6*o==35=n2zjna*4sn9luprw9z4h7v'
 	DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-	}
+		'default': {
+			'ENGINE': 'django.db.backends.sqlite3',
+			'NAME': BASE_DIR / 'db.sqlite3',
+		}
     }
 
 # production mode
 elif "adjutant" in os.getcwd():
-    DEBUG = False
-    SECRET_KEY = secret_key
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'soulrendnd',
-    	'USER': 'adjutant',
-    	'PASSWORD': database_password,
-        }
-    }
+	DEBUG = False
+	SECRET_KEY = secret_key
+	DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.postgresql',
+		'NAME': 'soulrendnd',
+		'USER': 'adjutant',
+		'PASSWORD': database_password,
+		}
+	}
 
 
 # Quick-start development settings - unsuitable for production
